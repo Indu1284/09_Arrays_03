@@ -8,7 +8,7 @@ einer HTML-Seite ausgibt:
 Verwenden Sie dafür die untenstehenden Arrays
 */
 
-const controls = {open_o:"<", open_cl:"</", close:">"};
+const controls = ["<", "</", ">"];
 const tags = ["html","head","head","body","h1","h1","p","p","p","p","ul","li","li","li","li","ul","body","html"];
 
 // Ziel --> "<html><head></head><body><p></p></body></html>"; 
