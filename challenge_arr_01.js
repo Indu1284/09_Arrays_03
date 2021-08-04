@@ -17,7 +17,11 @@ const tags = ["html","head","head","body","h1","h1","p","p","p","p","ul","li","l
 // Modul: HTML-String erzeugen | Test
 ausgabe(getHTML());
 function getHTML(){
-	
+	let htmlstr ="";
+    for(let i=0 ; i <tags.length ; i++){
+        htmlstr += tags[i];
+}       
+return htmlstr;
 }
 
 // Modul: Ausgabe | Test
