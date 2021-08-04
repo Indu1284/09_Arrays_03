@@ -10,7 +10,7 @@ Verwenden Sie dafür die untenstehenden Arrays
 
 const controls = ["<", "</", ">"];
 const tags = ["html","head","head","body","h1","h1","p","p","p","p","ul","li","li","li","li","ul","body","html"];
-
+let stack = [];
 // Ziel --> "<html><head></head><body><p></p></body></html>"; 
  
  
@@ -19,11 +19,47 @@ ausgabe(getHTML());
 function getHTML(){
 	let htmlstr ="";
     for(let i=0 ; i <tags.length ; i++){
-        htmlstr += tags[i];
+        if (isopenTag(tags[i])){
+            htmlstr += gettag(tags[i],"open");
+        } else {
+            htmlstr += gettag(tags[i],"close");
+        }
+
+        
 }       
 return htmlstr;
 }
+//ausgabe(gettag("p","open"));
+//ausgabe(gettag("p","close"));
+function gettag(tag,flag){
+switch (flag){
+    case "open":
+        return "<" + tag + ">";
+    case "close":
+        return "</" + tag + ">";
+    default:
+        return "#!?";
+    }
+}
 
+/*ausgabe(isopenTag("html"));
+ausgabe(isopenTag("head"));
+ausgabe(isopenTag("head"));
+ausgabe(isopenTag("body"));*/
+function isopenTag(tag) {
+    const cond = (stack.indexOf(tag) == -1)// tag ist neu
+    if (cond){
+        stack.push(tag);
+        ausgabe(stack);
+        return true;
+    }else {
+        stack.pop();
+        ausgabe(stack);
+        return false;
+    }
+}
+
+   
 // Modul: Ausgabe | Test
 //ausgabe("hi");
 function ausgabe(outputStr) {
