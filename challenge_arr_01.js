@@ -33,7 +33,7 @@ return htmlstr;
 
 function getTab(tabCount) {
     let myTab ="";
-    for (let i=0; i < tabcount; i++){
+    for (let i=0; i < tabCount; i++){
         myTab += "\t";
     }
     return myTab;
