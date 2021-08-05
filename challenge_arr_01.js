@@ -11,6 +11,7 @@ Verwenden Sie dafür die untenstehenden Arrays
 const controls = ["<", "</", ">"];
 const tags = ["html","head","head","body","h1","h1","p","p","p","p","ul","li","li","li","li","ul","body","html"];
 let stack = [];
+
 // Ziel --> "<html><head></head><body><p></p></body></html>"; 
  
  
@@ -29,26 +30,37 @@ function getHTML(){
 }       
 return htmlstr;
 }
+
+function getTab(tabCount) {
+    let myTab ="";
+    for (let i=0; i < tabcount; i++){
+        myTab += "\t";
+    }
+    return myTab;
+}
 //ausgabe(gettag("p","open"));
 //ausgabe(gettag("p","close"));
 function gettag(tag,flag){
 switch (flag){
     case "open":
-        return "<" + tag + ">";
+        return getTab(stack.length - 1) + controls[0] + tag + controls[2] + "\n";
     case "close":
-        return "</" + tag + ">";
+        return getTab(stack.length) + controls[1] + tag + controls[2] + "\n";
     default:
         return "#!?";
     }
 }
+
+
 
 /*ausgabe(isopenTag("html"));
 ausgabe(isopenTag("head"));
 ausgabe(isopenTag("head"));
 ausgabe(isopenTag("body"));*/
 function isopenTag(tag) {
-    const cond = (stack.indexOf(tag) == -1)// tag ist neu
+    const cond = (stack.indexOf(tag) == -1);// tag ist neu
     if (cond){
+
         stack.push(tag);
         ausgabe(stack);
         return true;
